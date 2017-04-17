@@ -17,7 +17,7 @@ import java.io.OutputStream;
  */
 @MultipartConfig
 @WebServlet("/upload.do")
-public class uploadGetPart extends HttpServlet {
+public class UploadGetPart extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8"); // 防止文件名乱码
