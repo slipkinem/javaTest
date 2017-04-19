@@ -3,7 +3,6 @@ package test.servlet.filter;
 import test.servlet.util.CompressionWrapper;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -12,7 +11,7 @@ import java.util.zip.GZIPOutputStream;
 /**
  * Created by slipkinem on 2017/4/18.
  */
-@WebFilter(filterName = "CompressionFilter", urlPatterns = {"/*"})
+//@WebFilter(filterName = "CompressionFilter", urlPatterns = {"/*"})
 public class CompressionFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
     }
