@@ -5,11 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.smart4j.chapter2.helper.DatabaseHelper;
 import org.smart4j.chapter2.model.Customer;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,11 +19,14 @@ public class CustomerService {
      * @return
      */
     public List<Customer> getCustomerList() {
-        // TODO
-        Connection connection = null;
-
-        List<Customer> list = new ArrayList<>();
         String sql = "SELECT * FROM customer";
+        return DatabaseHelper.queryEntityList(Customer.class, sql);
+
+        /* *************************
+         // TODO
+         Connection connection = null;
+
+         List<Customer> list = new ArrayList<>();
         try {
             connection = DatabaseHelper.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -50,8 +48,8 @@ public class CustomerService {
         } finally {
             DatabaseHelper.closeConnection(connection);
         }
-
         return null;
+         ***********************/
     }
 
     /**
@@ -61,7 +59,8 @@ public class CustomerService {
      */
     public Customer getCustomer(long id) {
         // TODO
-        return null;
+        String sql = "SELECT * FROM customer WHERE id=?";
+        return DatabaseHelper.queryEntity(Customer.class, sql, id);
     }
 
     /**
@@ -71,7 +70,7 @@ public class CustomerService {
      */
     public boolean createCustomer (Map<String, Object> fieldMap) {
         // TODO
-        return false;
+        return DatabaseHelper.insertEntiry(Customer.class, fieldMap);
     }
 
     /**
@@ -82,7 +81,7 @@ public class CustomerService {
      */
     public boolean updateCustomer (long id, Map<String, Object> fieldMap) {
 //        TODO
-        return false;
+        return DatabaseHelper.updateEntity(Customer.class, id, fieldMap);
     }
 
     /**
@@ -92,6 +91,6 @@ public class CustomerService {
      */
     public boolean deleteCustomer(long id) {
         // TODO
-        return false;
+        return DatabaseHelper.deleteEntity(Customer.class, id);
     }
 }
