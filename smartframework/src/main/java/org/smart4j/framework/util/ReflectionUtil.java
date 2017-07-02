@@ -53,7 +53,8 @@ public final class ReflectionUtil {
      * @param field 成员变量
      * @param value 成员变量的值
      */
-    public static void setField (Object object, Field field, Object value) {
+    public static void
+    setField (Object object, Field field, Object value) {
         field.setAccessible(true);
         try {
             field.set(object, value);
