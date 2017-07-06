@@ -15,6 +15,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 /**
+ * 处理Class
  * Created by slipkinem on 6/29/2017.
  */
 public class ClassUtil {
@@ -32,9 +33,9 @@ public class ClassUtil {
     /**
      * 加载类
      *
-     * @param className
-     * @param isInitialized
-     * @return
+     * @param className 类名称
+     * @param isInitialized 是否初始化
+     * @return class
      */
     public static Class<?> loadClass(String className, boolean isInitialized) {
         Class<?> cls;

@@ -10,10 +10,14 @@ public class StringUtil {
         if (str != null) {
             str = str.trim();
         }
-        return StringUtils.isNotEmpty(str);
+        return StringUtils.isEmpty(str);
     }
 
     public static boolean isNotEmpty(String str) {
         return !isEmpty(str);
+    }
+    // 通过标识符切割字符串为数组
+    public static String[] splitString(String source, char separatorChar) {
+        return StringUtils.split(source, separatorChar);
     }
 }

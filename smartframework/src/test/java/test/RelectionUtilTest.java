@@ -1,7 +1,7 @@
-package org.smart4j.framework.test;
+package test;
 
 import org.junit.Test;
-import org.smart4j.framework.ConfigConstant;
+import org.smart4j.framework.helper.ClassHelper;
 import org.smart4j.framework.util.ArrayUtil;
 
 import java.lang.reflect.Field;
@@ -22,5 +22,15 @@ public class RelectionUtilTest {
         System.out.println(configConstant.getClass());
         System.out.println(field);
         System.out.println(configConstant + "哈哈");
+    }
+
+    @Test
+    public void testGetServiceClassSet () {
+        System.out.println(ClassHelper.getServiceClassSet());
+    }
+
+    @Test
+    public void testGetClassSet () {
+        System.out.println(ClassHelper.getBeanClassSet());
     }
 }

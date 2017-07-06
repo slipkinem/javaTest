@@ -24,8 +24,8 @@ public class IocHelper {
      *     2. 遍历Map 获取到Customer 和 customerInstance
      *     3. 获取Customer中声明的变量成员 tableService，是一个Field（字段）数组
      *     4. 遍历 Filed[] 获取到所有字段带 @inject 的field
-     *     5. 获取此 field 的类型，是一个Class
-     *     6. 设置该 field 的值 (filed.set())
+     *     5. 获取此 field 的类型，是一个Class，也就是间接的获取到了TableService
+     *     6. 设置该 field 的值 (field.set(field所属的对象， field要赋的值))
      * </example>
      */
     static {
@@ -59,8 +59,8 @@ public class IocHelper {
                         if (beanFieldInstance != null) {
                             // 通过反射机制设置beanField的值
                             // beanInstance 成员变量类的实例
-                            // beanField 成员变量字段
-                            // beanFieldInstance 成员变量类型的实例
+                            // beanField 成员变量字段,也就是成员变量类的实例的属性
+                            // beanFieldInstance 成员变量类型的实例 值
                             // beanField.set(beanInstance, beanFieldInstance)
                             ReflectionUtil.setField(beanInstance, beanField, beanFieldInstance);
                         }
