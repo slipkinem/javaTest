@@ -1,6 +1,7 @@
 package org.smart4j.framework;
 
 /**
+ * 配置文件名称
  * Created by slipkinem on 6/29/2017.
  */
 public interface ConfigConstant {

@@ -27,4 +27,9 @@ public class TestControlelr {
         }
         return view;
     }
+
+    @Action("get:/test")
+    public View hello() {
+        return new View("hello.jsp");
+    }
 }

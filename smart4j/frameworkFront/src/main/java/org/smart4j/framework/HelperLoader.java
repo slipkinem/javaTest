@@ -7,6 +7,7 @@ import org.smart4j.framework.helper.IocHelper;
 import org.smart4j.framework.util.ClassUtil;
 
 /**
+ * 集中加载IOC,CLASS,CONTROLLER和所有的ben
  * Created by slipkinem on 7/3/2017.
  */
 public final class HelperLoader {
