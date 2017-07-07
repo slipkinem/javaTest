@@ -13,5 +13,6 @@
 <body>
  hello
 ${test}
+${hello}
 </body>
 </html>

@@ -7,6 +7,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
+ * 反射工具类
  * Created by slipkinem on 6/30/2017.
  */
 public final class ReflectionUtil {

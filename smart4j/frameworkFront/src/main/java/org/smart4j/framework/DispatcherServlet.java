@@ -35,6 +35,7 @@ public class DispatcherServlet extends HttpServlet {
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
         // 初始化所有Helper类
+        // 在启动tomcat的时候运行
         HelperLoader.init();
         ServletContext servletContext = servletConfig.getServletContext();
         ServletRegistration jspServlet = servletContext.getServletRegistration("jsp");
@@ -83,10 +84,13 @@ public class DispatcherServlet extends HttpServlet {
                         response.sendRedirect(request.getContextPath() + path);
                     } else {
                         Map<String, Object> model = view.getModel();
-                        for (Map.Entry<String, Object> entry : model.entrySet()) {
-                            request.setAttribute(entry.getKey(), entry.getValue());
+                        if (CollectionUtil.isNotEmpty(model)) {
+                            for (Map.Entry<String, Object> entry : model.entrySet()) {
+                                request.setAttribute(entry.getKey(), entry.getValue());
+                            }
                         }
-                        request.getRequestDispatcher(ConfigHelper.getAppJspPath() + path).forward(request, response);
+                        String fullPath = ConfigHelper.getAppJspPath() + path;
+                        request.getRequestDispatcher(fullPath).forward(request, response);
                     }
                 }
             } else if (result instanceof Data) {
