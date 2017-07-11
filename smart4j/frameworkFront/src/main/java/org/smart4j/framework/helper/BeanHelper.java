@@ -46,10 +46,18 @@ public final class BeanHelper {
         if (BEAN_MAP.containsKey(cls)) {
             return (T) BEAN_MAP.get(cls);
         } else {
-            throw new RuntimeException("无法通过" + cls + "获取到实例");
+            throw new RuntimeException("无法通过 " + cls + " 获取到实例");
         }
     }
 
+    /**
+     * 设置bean
+     * @param cls 类
+     * @param object 实例
+     */
+    public static void setBeanMap (Class<?> cls, Object object) {
+        BEAN_MAP.put(cls, object);
+    }
 
 }
 
