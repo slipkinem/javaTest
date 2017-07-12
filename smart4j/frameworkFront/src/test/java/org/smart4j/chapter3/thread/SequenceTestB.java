@@ -1,12 +1,13 @@
 package org.smart4j.chapter3.thread;
 
 /**
+ * 排序测试类
  * Created by slipkinem on 7/11/2017.
  */
 public class SequenceTestB implements Sequence {
     private static ThreadLocal<Integer> numberContainer = new ThreadLocal<Integer>() {
         @Override
-        protected Integer initialValue() {
+        protected Integer initialValue () {
             return 0;
         }
     };

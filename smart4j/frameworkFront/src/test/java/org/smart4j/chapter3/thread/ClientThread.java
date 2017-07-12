@@ -6,7 +6,7 @@ package org.smart4j.chapter3.thread;
 public class ClientThread extends Thread {
     private Sequence sequence;
 
-    public ClientThread (Sequence sequence) {
+    public ClientThread(Sequence sequence) {
         this.sequence = sequence;
     }
 

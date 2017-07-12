@@ -25,7 +25,7 @@ public final class AopHelper {
             for (Map.Entry<Class<?>, List<Proxy>> targetEntry : targetMap.entrySet()) {
                 Class<?> targetClass = targetEntry.getKey();
                 List<Proxy> proxyList = targetEntry.getValue();
-                Object proxy = ProxyManager.createProxy(targetClass, proxyList);
+                Proxy proxy = ProxyManager.createProxy(targetClass, proxyList);
                 BeanHelper.setBeanMap(targetClass, proxy);
             }
         } catch (Exception e) {
@@ -35,10 +35,11 @@ public final class AopHelper {
 
     /**
      * 创建ClassSet 将所有的拥有Aspect注解类的class拿出来
-     * @param aspect
+     *
+     * @param aspect 切面
      * @return
      */
-    private static Set<Class<?>> createTargetClassSet (Aspect aspect) {
+    private static Set<Class<?>> createTargetClassSet(Aspect aspect) {
         Set<Class<?>> targetClassSet = new HashSet<Class<?>>();
         Class<? extends Annotation> annotation = aspect.value();
         if (annotation != null && !annotation.equals(Aspect.class)) {
@@ -49,9 +50,10 @@ public final class AopHelper {
 
     /**
      * 创建proxyMap
+     *
      * @return proxyMap
      */
-    private static Map<Class<?>, Set<Class<?>>> createProxyMap () {
+    private static Map<Class<?>, Set<Class<?>>> createProxyMap() {
         Map<Class<?>, Set<Class<?>>> proxyMap = new HashMap<Class<?>, Set<Class<?>>>();
         Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySuper(AspectProxy.class);
         for (Class<?> proxyClass : proxyClassSet) {
@@ -66,6 +68,7 @@ public final class AopHelper {
 
     /**
      * 创建目标类代理
+     *
      * @param proxyMap 类和代理映射
      * @return Map
      * @throws Exception

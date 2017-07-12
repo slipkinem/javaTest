@@ -11,6 +11,7 @@ import java.lang.reflect.Method;
  */
 public class AspectProxy implements Proxy {
     private static final Logger logger = LoggerFactory.getLogger(AspectProxy.class);
+
     public Object doProxy(ProxyChain proxyChain) throws Throwable {
         Object result = null;
         Class<?> cls = proxyChain.getTargetClass();
