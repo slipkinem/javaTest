@@ -1,13 +1,10 @@
 package org.smart4j.framework;
 
-import org.smart4j.framework.helper.BeanHelper;
-import org.smart4j.framework.helper.ClassHelper;
-import org.smart4j.framework.helper.ControllerHelper;
-import org.smart4j.framework.helper.IocHelper;
+import org.smart4j.framework.helper.*;
 import org.smart4j.framework.util.ClassUtil;
 
 /**
- * 集中加载IOC,CLASS,CONTROLLER和所有的ben
+ * 集中加载IOC,CLASS,CONTROLLER和所有的bean
  * Created by slipkinem on 7/3/2017.
  */
 public final class HelperLoader {
@@ -15,6 +12,7 @@ public final class HelperLoader {
         Class<?>[] classes = {
                 ClassHelper.class,
                 BeanHelper.class,
+                AopHelper.class,
                 IocHelper.class,
                 ControllerHelper.class
         };
