@@ -96,7 +96,7 @@ public class DispatcherServlet extends HttpServlet {
             // request payload form提交 contentType 为 x-www-form-urlencoded 数据用k-v存储直接用parameter获取
             // request payload ajax传输，ContentType 为 text/plain;charset=UTF-8，由于数据格式不固定，
             // 所以需要先读取原始的数据流，然后进行处理
-            // 这里不做json的处理, 处理这种 res.send('key=val$k=v$k=v')
+            // 这里不做json的处理, 处理这种 res.send('key=val&k=v&k=v')
             String body = CodecUtil.decodeURL(StreamUtil.getString(request.getInputStream()));
 
             if (StringUtil.isNotEmpty(body)) {
