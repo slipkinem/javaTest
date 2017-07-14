@@ -77,22 +77,23 @@ public final class DatabaseHelper {
         }
         return connection;
     }
-/***
- * 使用dbcp就不需要自己关闭数据库连接了
-    public static void closeConnection() {
-        Connection connection = CONNECTION_THREAD_LOCAL.get();
-        if (connection != null) {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                LOGGER.error("数据库断连失败", e);
-                throw new RuntimeException(e);
-            } finally {
-                CONNECTION_THREAD_LOCAL.remove();
-            }
-        }
-    }
- ****/
+
+    /***
+     * 使用dbcp就不需要自己关闭数据库连接了
+     public static void closeConnection() {
+     Connection connection = CONNECTION_THREAD_LOCAL.get();
+     if (connection != null) {
+     try {
+     connection.close();
+     } catch (SQLException e) {
+     LOGGER.error("数据库断连失败", e);
+     throw new RuntimeException(e);
+     } finally {
+     CONNECTION_THREAD_LOCAL.remove();
+     }
+     }
+     }
+     ****/
 
     public static <T> List<T> queryEntityList(Class<T> entityClass, String sql, Object... params) {
         List<T> entityList = null;
@@ -117,9 +118,9 @@ public final class DatabaseHelper {
         }
         /**
          * dbcp统一管理数据库连接
-        finally {
-            closeConnection();
-        }
+         finally {
+         closeConnection();
+         }
          **/
         return entity;
     }
@@ -138,6 +139,7 @@ public final class DatabaseHelper {
 
     /**
      * 多用途 包括删除，添加，更新
+     *
      * @param sql
      * @param params
      * @return
@@ -156,6 +158,7 @@ public final class DatabaseHelper {
 
     /**
      * 将数据库的model => 数据库表名
+     *
      * @param clazz
      * @return
      */
@@ -187,7 +190,7 @@ public final class DatabaseHelper {
         String sql = "INSERT INTO " + getTableName(entityClass);
         StringBuilder columns = new StringBuilder(" (");
         StringBuilder values = new StringBuilder(" (");
-        for (String field: fieldMap.keySet()) {
+        for (String field : fieldMap.keySet()) {
             columns.append(field).append(", ");
             values.append("?, ");
         }
@@ -231,7 +234,7 @@ public final class DatabaseHelper {
         return executeUpdate(sql, id) == 1;
     }
 
-    public static void executeSqlFile (String filePath) {
+    public static void executeSqlFile(String filePath) {
         InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(filePath);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         String sql;
