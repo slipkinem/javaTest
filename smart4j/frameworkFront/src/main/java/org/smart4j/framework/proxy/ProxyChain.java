@@ -43,10 +43,10 @@ public class ProxyChain {
         return methodParams;
     }
 
-    public Object doProxyChain () throws Throwable {
+    public Object doProxyChain() throws Throwable {
         Object methodResult;
         if (proxyIndex < proxyList.size()) {
-            methodResult = proxyList.get(proxyIndex ++).doProxy(this);
+            methodResult = proxyList.get(proxyIndex++).doProxy(this);
         } else {
             methodResult = methodProxy.invokeSuper(targetObject, methodParams);
         }
